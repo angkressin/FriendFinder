@@ -1,0 +1,52 @@
+/* body {
+  background-image: url("images/home_bg.jpeg");
+  background-size: 100%;
+} */
+
+.parallax {
+    /* The image used */
+    background-image: url("images/home_bg.jpeg");
+
+    /* Set a specific height */
+    height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron {
+  margin-top: 3rem;
+}
+
+.card {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.navbar {
+  padding: 1rem;
+}
+
+.wrapper {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  min-height: calc(100vh - 5rem);
+}
+
+.questions_font {
+  font-size: 1.2rem;
+}
+
+.heading_font {
+  font-size: 1.5rem;
+}
+
+.footer {
+  background-color: #f7f7f9;
+  padding-top: 1rem;
+  padding-bottom: .2rem;
+}
