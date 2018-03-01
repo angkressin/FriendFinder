@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/lux/bootstrap.min.css">
@@ -15,7 +15,7 @@
 
 <body class="parallax">
   <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -25,16 +25,16 @@
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <!-- modal text goes here -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Connect now</button>
+          <button type="button" id="mailto" class="btn btn-primary" data-dismiss="modal">Connect now</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
-    <!-- End Modal -->
+  <!-- End Modal -->
 
   <div class="wrapper">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -45,8 +45,8 @@
   </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/survey">Survey</a>
+            <a class="nav-item nav-link" href="/">Home</a>
+            <a class="nav-item nav-link active" href="/survey">Survey <span class="sr-only">(current)</span></a>
           </div>
         </div>
       </div>
@@ -61,17 +61,21 @@
           <form>
             <div class="form-group">
               <label class="questions_font" for="name">Name (required)</label>
-              <input type="text" class="form-control" id="name" placeholder="Jane Doe" required>
+              <input type="text" class="form-control" id="name" placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+              <label class="questions_font" for="email">Email (required)</label>
+              <input type="email" class="form-control" id="email" placeholder="Janedoe@gmail.com">
             </div>
             <div class="form-group">
               <label class="questions_font" for="photoUpload">Upload a picture of yourself (required)</label>
-              <input type="file" class="form-control-file" id="photoUpload" required>
+              <input type="file" class="form-control-file" id="photoUpload" accept=".jpg, .jpeg, .png">
             </div>
             <hr>
             <h5 class="card-title heading_font">Questions</h5>
             <div class="form-group">
-              <label class="questions_font" for="exampleFormControlSelect1">1. Your mind is always buzzing with unexplored ideas and plans.</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label class="questions_font" for="q1">1. Your mind is always buzzing with unexplored ideas and plans.</label>
+              <select class="form-control" id="q1">
       <option value="">Select an option</option>
       <option value="1">1 (Strongly disagree)</option>
       <option value="2">2</option>
@@ -81,8 +85,8 @@
     </select>
             </div>
             <div class="form-group">
-              <label class="questions_font" for="exampleFormControlSelect1">2. Generally speaking, you rely more on your experience than your imagination.</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label class="questions_font" for="q2">2. Generally speaking, you rely more on your experience than your imagination.</label>
+              <select class="form-control" id="q2">
       <option value="">Select an option</option>
       <option value="1">1 (Strongly disagree)</option>
       <option value="2">2</option>
@@ -92,8 +96,8 @@
     </select>
             </div>
             <div class="form-group">
-              <label class="questions_font" for="exampleFormControlSelect1">3. You find it easy to stay relaxed and focused even when there is some pressure.</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label class="questions_font" for="q3">3. You find it easy to stay relaxed and focused even when there is some pressure.</label>
+              <select class="form-control" id="q3">
       <option value="">Select an option</option>
       <option value="1">1 (Strongly disagree)</option>
       <option value="2">2</option>
@@ -103,8 +107,8 @@
     </select>
             </div>
             <div class="form-group">
-              <label class="questions_font" for="exampleFormControlSelect1">4. You rarely do something just out of sheer curiosity.</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label class="questions_font" for="q4">4. You rarely do something just out of sheer curiosity.</label>
+              <select class="form-control" id="q4">
       <option value="">Select an option</option>
       <option value="1">1 (Strongly disagree)</option>
       <option value="2">2</option>
@@ -114,8 +118,8 @@
     </select>
             </div>
             <div class="form-group">
-              <label class="questions_font" for="exampleFormControlSelect1">5. People can rarely upset you.</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label class="questions_font" for="q5">5. People can rarely upset you.</label>
+              <select class="form-control" id="q5">
       <option value="">Select an option</option>
       <option value="1">1 (Strongly disagree)</option>
       <option value="2">2</option>
@@ -125,8 +129,8 @@
     </select>
             </div>
             <div class="form-group">
-              <label class="questions_font" for="exampleFormControlSelect1">6. It is often difficult for you to relate to other people’s feelings.</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label class="questions_font" for="q6">6. It is often difficult for you to relate to other people’s feelings.</label>
+              <select class="form-control" id="q6">
       <option value="">Select an option</option>
       <option value="1">1 (Strongly disagree)</option>
       <option value="2">2</option>
@@ -136,8 +140,8 @@
     </select>
             </div>
             <div class="form-group">
-              <label class="questions_font" for="exampleFormControlSelect1">7. In a discussion, truth should be more important than people’s sensitivities.</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label class="questions_font" for="q7">7. In a discussion, truth should be more important than people’s sensitivities.</label>
+              <select class="form-control" id="q7">
       <option value="">Select an option</option>
       <option value="1">1 (Strongly disagree)</option>
       <option value="2">2</option>
@@ -147,8 +151,8 @@
     </select>
             </div>
             <div class="form-group">
-              <label class="questions_font" for="exampleFormControlSelect1">8. You rarely get carried away by fantasies and ideas.</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label class="questions_font" for="q8">8. You rarely get carried away by fantasies and ideas.</label>
+              <select class="form-control" id="q8">
       <option value="">Select an option</option>
       <option value="1">1 (Strongly disagree)</option>
       <option value="2">2</option>
@@ -158,9 +162,9 @@
     </select>
             </div>
             <div class="form-group">
-              <label class="questions_font" for="exampleFormControlSelect1">9. You think that everyone’s views should be respected regardless of whether they are supported by facts or not.
+              <label class="questions_font" for="q9">9. You think that everyone’s views should be respected regardless of whether they are supported by facts or not.
 </label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <select class="form-control" id="q9">
       <option value="">Select an option</option>
       <option value="1">1 (Strongly disagree)</option>
       <option value="2">2</option>
@@ -170,8 +174,8 @@
     </select>
             </div>
             <div class="form-group">
-              <label class="questions_font" for="exampleFormControlSelect1">10. You feel more energetic after spending time with a group of people.</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <label class="questions_font" for="q10">10. You feel more energetic after spending time with a group of people.</label>
+              <select class="form-control" id="q10">
       <option value="">Select an option</option>
       <option value="1">1 (Strongly disagree)</option>
       <option value="2">2</option>
@@ -181,24 +185,139 @@
     </select>
             </div>
           </form>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Match me!</button>
+          <button type="button" class="btn btn-primary submit" data-target="#myModal">Match me!</button>
+          <!-- alert -->
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Woops!</strong> You must enter all fields before proceeding.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <!-- End alert -->
         </div>
       </div>
     </div>
   </div>
-  <!-- Modal -->
-  <script type="text/javascript">
-    $("#myModal").on('click', function() {
-      $("#myModal").modal("toggle")
-    })
-  </script>
-  <!-- End modal -->
 
   <footer class="footer">
     <div class="container">
-      <p><a href="/api/tables">API Friends List</a> | <a href="https://github.com/angkressin/FriendFinder">GitHub Repo</a></p>
+      <p><a href="/api/friends" target="_blank">API Friends List</a> | <a href="https://github.com/angkressin/FriendFinder" target="_blank">GitHub Repo</a></p>
     </div>
   </footer>
 </body>
 
 </html>
+
+<!-- JS -->
+<script type="text/javascript">
+  var newFriend
+  $('.alert').hide();
+
+  // function for on click of the submit button
+  $(".submit").on('click', function(event) {
+    event.preventDefault();
+    // grab the form elements
+    newFriend = {
+      name: $("#name").val().trim(),
+      email: $("#email").val().trim(),
+      // picture: $("#photoUpload").val(),
+      scores: [
+        $("#q1").val().trim(),
+        $("#q2").val().trim(),
+        $("#q3").val().trim(),
+        $("#q4").val().trim(),
+        $("#q5").val().trim(),
+        $("#q6").val().trim(),
+        $("#q7").val().trim(),
+        $("#q8").val().trim(),
+        $("#q9").val().trim(),
+        $("#q10").val().trim()
+      ]
+      // console.log(picture)
+    };
+
+    console.log("newFriend: " + JSON.stringify(newFriend))
+
+    // validate for empty form
+    if (newFriend.name === "" || newFriend.email === "" || newFriend.scores === "") {
+      $('.alert').show();
+    } else {
+      // post to the friends data array
+      $.post("/api/friends", newFriend);
+      // launch modal
+      $("#myModal").modal("toggle");
+      runFriendsQuery(newFriend);
+    }
+    clearForm();
+  });
+
+  function runFriendsQuery(newFriend) {
+    var currentURL = window.location.origin;
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.ajax({
+      url: currentURL + "/api/friends",
+      method: "GET"
+    }).done(function(friendData) {
+      console.log("------------------------------------");
+      console.log("URL: " + currentURL + "/api/friends");
+      console.log("------------------------------------");
+      // var friendDataObject = JSON.stringify(friendData)
+      console.log(friendData);
+      console.log("------------------------------------");
+      var userScore = newFriend.scores;
+      var userScoreSum = userScore.reduce(getSum);
+      console.log("this is the user's score sum: " + userScoreSum)
+
+      // Loop through and display each of the friends
+      for (var i = 0; i < friendData.length; i++) {
+        var otherUser = friendData[i];
+        var otherUsersData = otherUser.scores;
+        console.log(otherUsersData)
+        var otherUsersDataSum = otherUsersData.reduce(getSum);
+        console.log("this is the other user's score sum: " + otherUser.name + " " + otherUsersDataSum)
+        var totalDifference = Math.abs(otherUsersDataSum - userScoreSum)
+        console.log("this is the other user's total diff: " + otherUser.name + " " + totalDifference)
+
+        // loop over each, if the one after is less then the one before then the closest person is the one after
+        var closestPerson = friendData[0];
+        var closestPersonDiff = Math.abs(closestPerson.scores.reduce(getSum) - userScoreSum);
+        // var comparable = Math.abs(friendData[i].scores.reduce(getSum) - userScoreSum);
+
+        if (closestPersonDiff > totalDifference ) {
+          closestPerson = otherUser;
+        }
+        console.log("this is the closest person: " + closestPerson.name)
+        // insert content into modal
+        $(".modal-body").html(closestPerson.name + "<br>" + closestPerson.email)
+        // mail to button
+        $("#mailto").on('click', function() {
+          var email = closestPerson.email;
+          var subject = "Let's be friends!";
+          var emailBody = "Hi " + closestPerson.name + ",";
+          document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
+        })
+      }
+    });
+  }
+
+  function getSum(total, num) {
+    return parseInt(total) + parseInt(num);
+  }
+
+  function clearForm() {
+    $("#name").val(""),
+      $("#email").val(""),
+      // $("#photoUpload").val(""),
+      $("#q1").val(""),
+      $("#q2").val(""),
+      $("#q3").val(""),
+      $("#q4").val(""),
+      $("#q5").val(""),
+      $("#q6").val(""),
+      $("#q7").val(""),
+      $("#q8").val(""),
+      $("#q9").val(""),
+      $("#q10").val("")
+  }
+</script>
+<!-- End JS -->
