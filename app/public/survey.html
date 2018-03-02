@@ -219,24 +219,38 @@
   // function for on click of the submit button
   $(".submit").on('click', function(event) {
     event.preventDefault();
+    // var scoresObj = {
+      var q1 = parseInt($("#q1").val().trim())
+      var q2 = parseInt($("#q2").val().trim())
+      var q3 = parseInt($("#q3").val().trim())
+      var q4 = parseInt($("#q4").val().trim())
+      var q5 = parseInt($("#q5").val().trim())
+      var q6 = parseInt($("#q6").val().trim())
+      var q7 = parseInt($("#q7").val().trim())
+      var q8 = parseInt($("#q8").val().trim())
+      var q9 = parseInt($("#q9").val().trim())
+      var q10 = parseInt($("#q10").val().trim())
+    // }
+
+    // console.log("this is the scores array object: " + Object.values(scoresObj))
     // grab the form elements
     newFriend = {
       name: $("#name").val().trim(),
       email: $("#email").val().trim(),
       picture: $("#photo").val(),
       scores: [
-        $("#q1").val().trim(),
-        $("#q2").val().trim(),
-        $("#q3").val().trim(),
-        $("#q4").val().trim(),
-        $("#q5").val().trim(),
-        $("#q6").val().trim(),
-        $("#q7").val().trim(),
-        $("#q8").val().trim(),
-        $("#q9").val().trim(),
-        $("#q10").val().trim()
+        q1,
+        q2,
+        q3,
+        q4,
+        q5,
+        q6,
+        q7,
+        q8,
+        q9,
+        q10
       ]
-    };
+    }
 
     console.log("newFriend: " + JSON.stringify(newFriend))
 
@@ -269,10 +283,14 @@
       var userScoreSum = userScore.reduce(getSum);
       console.log("this is the user's score sum: " + userScoreSum)
 
+      // reverse the array so user can get the latest match, not necessarily the first match
+      var revFriendsData = friendData.reverse();
+      console.log("this is the reversed data: " + revFriendsData)
+
       // Loop through and display each of the friends
-      for (var i = 0; i < friendData.length; i++) {
-        var otherUser = friendData[i];
-        var otherUsersData = otherUser.scores;
+      for (var i = 1; i < revFriendsData.length; i++) {
+        var otherUser = revFriendsData[i];
+        var otherUsersData = revFriendsData[i].scores;
         console.log(otherUsersData)
         var otherUsersDataSum = otherUsersData.reduce(getSum);
         console.log("this is the other user's score sum: " + otherUser.name + " " + otherUsersDataSum)
@@ -280,23 +298,25 @@
         console.log("this is the other user's total diff: " + otherUser.name + " " + totalDifference)
 
         // loop over each, if the one after is less then the one before then the closest person is the one after
-        var closestPerson = friendData[0];
-        var closestPersonDiff = Math.abs(closestPerson.scores.reduce(getSum) - userScoreSum);
+        var closestPerson = revFriendsData[1];
+        var closestPersonDiff = Math.abs(revFriendsData[1].scores.reduce(getSum) - userScoreSum);
+        console.log("this is Emily's diff: " + closestPersonDiff)
 
-        if (closestPersonDiff > totalDifference ) {
+        if (closestPersonDiff > totalDifference) {
           closestPerson = otherUser;
+          break;
         }
-        console.log("this is the closest person: " + closestPerson.name)
-        // insert content into modal
-        $(".modal-body").html("<img class='picSize' src='" + closestPerson.picture + "' alt='picture'><br>" + closestPerson.name + "<br>" + closestPerson.email)
-        // mail to button
-        $("#mailto").on('click', function() {
-          var email = closestPerson.email;
-          var subject = "Let's be friends!";
-          var emailBody = "Hi " + closestPerson.name + ",";
-          document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
-        })
+      console.log("this is the closest person: " + closestPerson.name)
       }
+      // insert content into modal
+      $(".modal-body").html("<img class='picSize' src='" + closestPerson.picture + "' alt='picture'><br>" + closestPerson.name + "<br>" + closestPerson.email)
+      // mail to button
+      $("#mailto").on('click', function() {
+        var email = closestPerson.email;
+        var subject = "Let's be friends!";
+        var emailBody = "Hi " + closestPerson.name + ",";
+        document.location = "mailto:" + email + "?subject=" + subject + "&body=" + emailBody;
+      })
     });
   }
 
