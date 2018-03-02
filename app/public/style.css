@@ -24,7 +24,7 @@
   position: relative;
   margin: auto;
   width: 100%;
-  min-height: calc(100vh - 5rem);
+  min-height: calc(100vh - 7rem);
 }
 
 .questions_font {
@@ -37,6 +37,10 @@
 
 .alert {
   top: -48px;
+}
+
+.small-text {
+  font-size: .5rem;
 }
 
 .footer {
