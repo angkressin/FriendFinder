@@ -252,7 +252,7 @@
       ]
     }
 
-    console.log("newFriend: " + JSON.stringify(newFriend))
+    // console.log("newFriend: " + JSON.stringify(newFriend))
 
     // validate for empty form
     if (newFriend.name === "" || newFriend.email === "" || newFriend.picture === "" || newFriend.scores === "") {
@@ -281,32 +281,32 @@
       console.log("------------------------------------");
       var userScore = newFriend.scores;
       var userScoreSum = userScore.reduce(getSum);
-      console.log("this is the user's score sum: " + userScoreSum)
+      // console.log("this is the user's score sum: " + userScoreSum)
 
       // reverse the array so user can get the latest match, not necessarily the first match
       var revFriendsData = friendData.reverse();
-      console.log("this is the reversed data: " + revFriendsData)
+      // console.log("this is the reversed data: " + revFriendsData)
 
       // Loop through and display each of the friends
       for (var i = 1; i < revFriendsData.length; i++) {
         var otherUser = revFriendsData[i];
         var otherUsersData = revFriendsData[i].scores;
-        console.log(otherUsersData)
+        // console.log(otherUsersData)
         var otherUsersDataSum = otherUsersData.reduce(getSum);
-        console.log("this is the other user's score sum: " + otherUser.name + " " + otherUsersDataSum)
+        // console.log("this is the other user's score sum: " + otherUser.name + " " + otherUsersDataSum)
         var totalDifference = Math.abs(otherUsersDataSum - userScoreSum)
-        console.log("this is the other user's total diff: " + otherUser.name + " " + totalDifference)
+        // console.log("this is the other user's total diff: " + otherUser.name + " " + totalDifference)
 
         // loop over each, if the one after is less then the one before then the closest person is the one after
         var closestPerson = revFriendsData[1];
         var closestPersonDiff = Math.abs(revFriendsData[1].scores.reduce(getSum) - userScoreSum);
-        console.log("this is Emily's diff: " + closestPersonDiff)
+        // console.log("this is Emily's diff: " + closestPersonDiff)
 
         if (closestPersonDiff > totalDifference) {
           closestPerson = otherUser;
           break;
         }
-      console.log("this is the closest person: " + closestPerson.name)
+      // console.log("this is the closest person: " + closestPerson.name)
       }
       // insert content into modal
       $(".modal-body").html("<img class='picSize' src='" + closestPerson.picture + "' alt='picture'><br>" + closestPerson.name + "<br>" + closestPerson.email)
