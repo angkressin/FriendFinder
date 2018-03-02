@@ -1,7 +1,7 @@
 var friendsArray = [{
     name: "Emily Smith",
     email: "emily@gmail.com",
-    // picture: $("#photoUpload").val(),
+    picture: "https://www.trendrr.net/wp-content/uploads/2017/06/Angelina-Jolie-Top-Most-Popular-Beautiful-Tattooed-Hollywood-Celebrities-2018.jpg",
     scores: [
       3,
       5,
@@ -18,7 +18,7 @@ var friendsArray = [{
   {
     name: "Aurelia Joan",
     email: "aj@gmail.com",
-    // picture: $("#photoUpload").val(),
+    picture: "https://diana-cdn.naturallycurly.com/Articles/527244RwQE",
     scores: [
       5,
       4,
@@ -35,7 +35,7 @@ var friendsArray = [{
   {
     name: "Stephen Jones",
     email: "stephen@gmail.com",
-    // picture: $("#photoUpload").val(),
+    picture: "https://www.thesun.co.uk/wp-content/uploads/2017/06/nintchdbpict000190860133.jpg?strip=all&w=960",
     scores: [
       4,
       4,

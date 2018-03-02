@@ -39,6 +39,12 @@
   top: -48px;
 }
 
+.picSize {
+  width: 200px;
+  height: auto;
+  margin-bottom: .5rem;
+}
+
 .small-text {
   font-size: .5rem;
 }
